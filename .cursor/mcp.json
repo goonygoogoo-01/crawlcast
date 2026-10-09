@@ -1,0 +1,7 @@
+{
+  "mcpServers": {
+    "comfyui": {
+      "url": "https://motocross-preformed-happy.ngrok-free.dev/sse"
+    }
+  }
+}
