@@ -1,0 +1,18 @@
+---
+description: Check ComfyUI images after queue_prompt
+alwaysApply: true
+---
+# ComfyUI output
+
+`python -m comfyui_mcp` is the ComfyUI bridge (SSE on `/sse`). It talks to ComfyUI at `COMFYUI_URL`, default `http://127.0.0.1:8188`.
+
+After `queue_prompt`, call `check_output` with the returned `prompt_id`. It waits for the job, returns the image, and copies each PNG into:
+
+- `COMFYUI_EXPORT_DIR`, when that variable is set
+- a `ComfyUI Output` folder inside any local OneDrive directory or Google Drive `My Drive`
+
+`get_history` returns the raw history JSON. `get_image` fetches one file by `filename`.
+
+Google Drive archive: https://drive.google.com/drive/folders/1k1p6ugi7liGsn6pzh-e4Cr03vRZmZv3y
+
+If `check_output` is not on the connected bridge, that process is still the older two-tool server. Restart it from this repo with `python -m comfyui_mcp`, and set `COMFYUI_BRIDGE_PORT` to the local port ngrok already forwards. The SSE path stays `/sse`.
